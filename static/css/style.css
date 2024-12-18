@@ -1,0 +1,216 @@
+:root {
+    --background-color: #E4D1B9;
+    --primary-color: #7FDBFF;
+    --secondary-color: #FF6F61;
+    --text-color: #2E4057;
+    --accent-color: #A4B494;
+    --button-color: #556B2F;
+    --button-text-color: #FFFFFF;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 15px 20px;
+    text-align: center;
+    border-bottom: 5px solid var(--accent-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.navbar li {
+    margin: 0;
+}
+
+.navbar .link {
+    text-decoration: none;
+    color: var(--button-text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    transition: background-color 0.3s ease;
+}
+
+.navbar .link:hover {
+    background-color: var(--accent-color);
+}
+
+.home-main {
+    text-align: center;
+    margin: 20px;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.summary,
+.stats {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: var(--button-color);
+    color: var(--button-text-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border-top: 5px solid var(--accent-color);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.top-btns {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+    width: max-content;
+    margin-top: 20px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+input {
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 10px;
+}
+
+.add-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.btn {
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+
+.todayfood,
+.yesterdayfood,
+.olderfood {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.todayfood h2,
+.yesterdayfood h2,
+.olderfood h2 {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.foodcont {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+}
+
+.edit-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.food {
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    z-index: 3;
+    text-wrap: 1;
+}
+
+.food-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.totalcal{
+    margin: 10px;
+    padding: 10px;
+}
+@media (max-width: 760px) {
+    nav {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    .foodcont {
+        grid-template-columns: auto;
+    }
+}

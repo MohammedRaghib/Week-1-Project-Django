@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block title %}Food Items{% endblock %}
+{% load static %}
+{% block content %}
+<span class="totalcal">Total calories: <strong>{{ TotalCal }}J</strong></span>
+<div class="top-btns">
+    <button onclick="handleview(true)" class="btn add" id="addbtn">➕</button>
+    <form method="post" id="delete-everything" onsubmit="reassure(event)">
+        {% csrf_token %}
+        <button name="delete-all" class="btn">🚮</button>
+    </form>
+</div>
+<aside class="add-form" style="display: none;">
+    <button onclick="handleview(false)" class="btn close">❌</button>
+    <form method="post" class="form">
+        {% csrf_token %}
+        <label for="Name">Food Name:</label>
+        <br>
+        <input type="text" name="name" id="name-input" maxlength="100" required>
+        <br><br>
+        <label for="Calorie">Number of calories:</label>
+        <br>
+        <input type="number" name="calorie" id="calorie-input" max="999999.99" step="0.01" required>
+        <br><br>
+        <button type="submit" name="add">➕</button>
+    </form>
+</aside>
+
+<main class="allfoods">
+    <section class="todayfood">
+        <h2>All Food Items Today</h2>
+        {% if LengthT > 0 %}
+        <div class="foodcont">
+            {% for food in Today %}
+            <div class="food">
+                <h3>{{ food.name }}</h3>
+                <p>{{ food.calorie }}J</p>
+                <p><strong>{{ food.date }}</strong></p>
+                <div class="food-buttons">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button formnovalidate name="delete" value="{{ food.id }}">🗑</button>
+                    </form>
+                    <button formnovalidate name="edit" value="{{ food.id }}"
+                        onclick="editfood('{{food.id}}', '{{food.name}}', '{{food.calorie}}')">🖊</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="message">No food items today</p>
+        {% endif %}
+    </section>
+
+    <section class="yesterdayfood">
+        <h2>All Food Items Yesterday</h2>
+        {% if LengthY > 0 %}
+        <div class="foodcont">
+            {% for food in Yesterday %}
+            <div class="food">
+                <h3>{{ food.name }}</h3>
+                <p>{{ food.calorie }}J</p>
+                <p><strong>{{ food.date }}</strong></p>
+                <div class="food-buttons">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button formnovalidate name="delete" value="{{ food.id }}">🗑</button>
+                    </form>
+                    <button formnovalidate name="edit" value="{{ food.id }}"
+                        onclick="editfood('{{food.id}}', '{{food.name}}', '{{food.calorie}}')">🖊</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="message">No food items yesterday</p>
+        {% endif %}
+    </section>
+
+    <section class="olderfood">
+        <h2>Older Food Items</h2>
+        {% if LengthO > 0 %}
+        <div class="foodcont">
+            {% for food in Older %}
+            <div class="food">
+                <h3>{{ food.name }}</h3>
+                <p>{{ food.calorie }}J</p>
+                <p><strong>{{ food.date }}</strong></p>
+                <div class="food-buttons">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button formnovalidate name="delete" value="{{ food.id }}">🗑</button>
+                    </form>
+                    <button formnovalidate name="edit" value="{{ food.id }}"
+                        onclick="editfood('{{food.id}}', '{{food.name}}', '{{food.calorie}}')">🖊</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="message">No older food items found</p>
+        {% endif %}
+    </section>
+
+    <article class="edit-form" style="display: none;">
+        <form method="post" class="form">
+            {% csrf_token %}
+            <label for="Name">Food Name:</label>
+            <br>
+            <input type="text" name="edit-name" id="edit-name-input" maxlength="100" required>
+            <br><br>
+            <label for="Calorie">Number of calories:</label>
+            <br>
+            <input type="number" name="edit-calorie" id="edit-calorie-input" max="999999.99" step="0.01" required>
+            <br><br>
+            <button type="submit" id="save" name="save" onclick="close()">Save food</button>
+        </form>
+    </article>
+</main>
+{% endblock %}
