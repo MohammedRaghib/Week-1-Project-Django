@@ -116,7 +116,8 @@ footer {
 input {
     background-color: var(--button-color);
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .add-form {
@@ -200,10 +201,13 @@ input {
     justify-content: center;
     align-items: center;
 }
-.totalcal{
+
+.totalcal {
     margin: 10px;
+    margin-top: 10px;
     padding: 10px;
 }
+
 @media (max-width: 760px) {
     nav {
         flex-direction: column;
