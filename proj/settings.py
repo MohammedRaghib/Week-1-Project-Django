@@ -1,13 +1,3 @@
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'calorie_tracker',
-#         'USER': 'new_user', #cal
-#         'PASSWORD': 'new_password', # thisisforcal
-#         'HOST': 'localhost',  # Assuming your database is hosted locally
-#         'PORT': '5432',       # Default PostgreSQL port
-#     }
-# }
 from pathlib import Path
 import os
 import dj_database_url
@@ -19,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-@l1c9no15c%!2s7rssz1_p^e&x2uk$x3#^u89a!4dv&d!m#5db')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'p&n@^l$3h(bv$8!o5*6xbv7_e#jhf*de(z32#=6#ow&=n#bt6f')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
@@ -35,7 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
+    'app',  # Your app here
 ]
 
 MIDDLEWARE = [
@@ -113,3 +103,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'calorie_tracker',
+#         'USER': 'new_user', #cal
+#         'PASSWORD': 'new_password', # thisisforcal
+#         'HOST': 'localhost',  # Assuming your database is hosted locally
+#         'PORT': '5432',       # Default PostgreSQL port
+#     }
+# }
