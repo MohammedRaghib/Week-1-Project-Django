@@ -88,8 +88,8 @@ DATABASES = {
         'NAME': 'calorie_tracker',
         'USER': 'new_user', #cal
         'PASSWORD': 'new_password', # thisisforcal
-        'HOST': 'localhost',  # Assuming your database is hosted locally
-        'PORT': '5432',       # Default PostgreSQL port
+        'HOST': 'localhost',  
+        'PORT': '5432',       
     }
 }
 
